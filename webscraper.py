@@ -1,3 +1,18 @@
+from bs4 import BeautifulSoup
+import requests
+from openpyxl import Workbook
+
+wb = Workbook()
+ws = wb.active
+ws.title = "Web_Data"
+
+def scrapeMarket():
+    dataSize = 0
+    pageToScrape = requests.get("https://steamcommunity.com/market/")
+    soup = BeautifulSoup(pageToScrape.text, "html.parser")
+
+    # titles = soup.findAll ('span', attrs = {'class':'market_listing_item_name'})
+    # for title in titles:
     #     print (title.txt)
 
     data=[]
@@ -13,3 +28,4 @@
     wb.save("Data_Entry.xlsx")
 
 scrapeMarket()
+
